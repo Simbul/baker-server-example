@@ -16,17 +16,8 @@
   $result = $file_db->query("SELECT product_id FROM purchased_issues WHERE app_id='$app_id' AND user_id='$user_id'");
   $purchased_product_ids = $result->fetchAll(PDO::FETCH_COLUMN);
 
-  $purchased_issues = array();
-  foreach ($issues as $key => $product_id) {
-    if (in_array($product_id, $purchased_product_ids)) {
-      $purchased_issues[$product_id] = true;
-    } else {
-      $purchased_issues[$product_id] = false;
-    }
-  }
-
   echo json_encode(array(
-    'issues' => $purchased_issues,
+    'issues' => $purchased_product_ids,
     'subscribed' => $subscribed
   ));
 ?>
