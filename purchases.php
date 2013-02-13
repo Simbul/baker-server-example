@@ -1,4 +1,10 @@
 <?php
+
+  // **************************************************************************
+  //
+  // This file implements the endpoint for the "purchases" API call.
+  //
+
   require_once 'header.php';
 
   $json_issues = stripcslashes($_POST['issues']);
@@ -20,4 +26,5 @@
     'issues' => $purchased_product_ids,
     'subscribed' => $subscribed
   ));
+
 ?>

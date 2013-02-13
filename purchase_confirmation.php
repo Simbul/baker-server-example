@@ -1,19 +1,11 @@
 <?php
+
+  // **************************************************************************
+  //
+  // This file implements the endpoint for the "purchase confirmation" API call.
+  //
+
   require_once 'header.php';
-
-  $file_db->exec("CREATE TABLE IF NOT EXISTS receipts (
-    transaction_id VARCHAR(30) PRIMARY KEY,
-    app_id VARCHAR(255),
-    user_id VARCHAR(255),
-    product_id VARCHAR(255),
-    type VARCHAR(30),
-    base64_receipt TEXT)");
-
-  $file_db->exec("CREATE TABLE IF NOT EXISTS purchased_issues (
-    app_id VARCHAR(255),
-    user_id VARCHAR(255),
-    product_id VARCHAR(255),
-    PRIMARY KEY(app_id, user_id, product_id))");
 
   $base64_receipt = stripcslashes($_POST['receipt_data']);
   $purchase_type = $_POST['type'];
@@ -43,7 +35,8 @@
     markIssuesAsPurchased($data, $app_id, $user_id);
   } else if ($purchase_type == 'issue') {
     markIssueAsPurchased($product_id, $app_id, $user_id);
+  } else if ($purchase_type == 'free-subscription') {
+    // Nothing to do, as the server assumes free subscriptions won't be enabled
   }
-
 
 ?>
