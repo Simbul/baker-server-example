@@ -13,4 +13,4 @@ This server is provided as an example and it should never be used in production.
 To verify receipt with the App Store you need to put your app shared secret in the `shared_secret.txt` file. See `shared_secret.txt.example` for instructions.
 You can generate/retrieve your app shared secret in iTunes Connect.
 
-You also need a SQLite databse. You can get an empty one by renaming `baker.sqlite3.example` to `baker.sqlite3` inside the `db/` folder.
+You also need a SQLite database. You can get an empty one by renaming `baker.sqlite3.example` to `baker.sqlite3` inside the `db/` folder.
