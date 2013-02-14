@@ -11,7 +11,11 @@
   $issues = json_decode($json_issues, true);
 
   // Retrieve latest receipts
-  $result = $file_db->query("SELECT base64_receipt FROM receipts WHERE app_id='$app_id' AND user_id='$user_id' AND type='auto-renewable-subscription' ORDER BY transaction_id DESC LIMIT 0, 1");
+  $result = $file_db->query(
+    "SELECT base64_receipt FROM receipts
+    WHERE app_id='$app_id' AND user_id='$user_id' AND type='auto-renewable-subscription'
+    ORDER BY transaction_id DESC LIMIT 0, 1"
+  );
   $base64_latest_receipt = $result->fetchColumn();
 
   $data = verifyReceipt($base64_latest_receipt);
@@ -19,7 +23,10 @@
 
   $subscribed = ($data->status == 0);
 
-  $result = $file_db->query("SELECT product_id FROM purchased_issues WHERE app_id='$app_id' AND user_id='$user_id'");
+  $result = $file_db->query(
+    "SELECT product_id FROM purchased_issues
+    WHERE app_id='$app_id' AND user_id='$user_id'"
+  );
   $purchased_product_ids = $result->fetchAll(PDO::FETCH_COLUMN);
 
   echo json_encode(array(

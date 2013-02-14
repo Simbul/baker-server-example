@@ -70,7 +70,13 @@
       $finish = intval($data->latest_expired_receipt_info->expires_date) / 1000;
     }
 
-    $result = $file_db->query("SELECT product_id FROM issues WHERE app_id='$app_id' AND product_id NOT NULL AND `date` > datetime($start, 'unixepoch') AND `date` < datetime($finish, 'unixepoch')");
+    $result = $file_db->query(
+      "SELECT product_id FROM issues
+      WHERE app_id='$app_id'
+      AND product_id NOT NULL
+      AND `date` > datetime($start, 'unixepoch')
+      AND `date` < datetime($finish, 'unixepoch')"
+    );
     $product_ids_to_mark = $result->fetchAll(PDO::FETCH_COLUMN);
 
     $insert = "INSERT OR IGNORE INTO purchased_issues (app_id, user_id, product_id)
@@ -88,10 +94,10 @@
   function markIssueAsPurchased($product_id, $app_id, $user_id) {
     global $log, $file_db;
 
-    $insert = "INSERT OR IGNORE INTO purchased_issues (app_id, user_id, product_id)
-      VALUES ('$app_id', '$user_id', '$product_id')";
-    $stmt = $file_db->prepare($insert);
-    $stmt->execute();
+    $file_db->query(
+      "INSERT OR IGNORE INTO purchased_issues (app_id, user_id, product_id)
+      VALUES ('$app_id', '$user_id', '$product_id')"
+    );
   }
 
 ?>
