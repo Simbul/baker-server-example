@@ -24,12 +24,13 @@
 
   // All the receipts sent by Baker for each application and each user.
   $file_db->exec("CREATE TABLE IF NOT EXISTS receipts (
-    transaction_id VARCHAR(30) PRIMARY KEY,
+    transaction_id VARCHAR(30),
     app_id VARCHAR(255),
     user_id VARCHAR(255),
     product_id VARCHAR(255),
     type VARCHAR(30),
-    base64_receipt TEXT)");
+    base64_receipt TEXT,
+    PRIMARY KEY(transaction_id, app_id, user_id))");
 
   // All the issues that should be considered as purcahsed for each
   // application and each user.
