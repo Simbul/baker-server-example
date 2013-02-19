@@ -18,10 +18,13 @@
   );
   $base64_latest_receipt = $result->fetchColumn();
 
-  $data = verifyReceipt($base64_latest_receipt);
-  markIssuesAsPurchased($data, $app_id, $user_id);
-
-  $subscribed = ($data->status == 0);
+  if ($base64_latest_receipt) {
+    $data = verifyReceipt($base64_latest_receipt);
+    markIssuesAsPurchased($data, $app_id, $user_id);
+    $subscribed = ($data->status == 0);
+  } else {
+    $subscribed = false;
+  }
 
   $result = $file_db->query(
     "SELECT product_id FROM purchased_issues
