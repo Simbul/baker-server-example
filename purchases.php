@@ -7,8 +7,8 @@
 
   require_once 'header.php';
 
-  $json_issues = stripcslashes($_POST['issues']);
-  $issues = json_decode($json_issues, true);
+  $app_id = $_GET['app_id'];
+  $user_id = $_GET['user_id'];
 
   // Retrieve latest receipts
   $result = $file_db->query(
