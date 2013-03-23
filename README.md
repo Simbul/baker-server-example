@@ -22,6 +22,7 @@ The server provides the following endpoints:
 * `purchase_confirmation.php`: accepts `POST` requests to save transaction receipts in the database
 * `purchases.php`: accepts `GET` requests to return a list of purchased issues
 * `shelf.php`: accepts `GET` requests to return a list of available issues
+* `post_apns_token.php`: accepts `POST` requests to save APNS device tokens in the database
 
 # Debugging
 

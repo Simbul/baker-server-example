@@ -43,4 +43,11 @@
     product_id VARCHAR(255),
     PRIMARY KEY(app_id, user_id, product_id))");
 
+  // All the APNS device tokens sent by Baker for each application and each user.
+  $file_db->exec("CREATE TABLE IF NOT EXISTS apns_tokens (
+    app_id VARCHAR(255),
+    user_id VARCHAR(255),
+    apns_token VARCHAR(64),
+    PRIMARY KEY(app_id, user_id, apns_token))");
+
 ?>
