@@ -16,6 +16,11 @@
   );
   $issues = $result->fetchAll(PDO::FETCH_ASSOC);
 
+  // Set up URL to point to `issue.php` endpoint
+  for ($i=0; $i < count($issues); $i++) {
+    $issues[$i]['url'] = 'http://baker.local/issue.php?name=' . $issues[$i]['name'];
+  }
+
   echo json_encode($issues);
 
 ?>

@@ -18,7 +18,6 @@
     info TEXT,
     date TIMESTAMP,
     cover VARCHAR(255),
-    url VARCHAR(255),
     product_id VARCHAR(255),
     PRIMARY KEY (name, app_id))");
 
