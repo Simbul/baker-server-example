@@ -23,6 +23,7 @@ The server provides the following endpoints:
 * `purchases.php`: accepts `GET` requests to return a list of purchased issues
 * `shelf.php`: accepts `GET` requests to return a list of available issues
 * `post_apns_token.php`: accepts `POST` requests to save APNS device tokens in the database
+* `issue.php`: accepts `GET` requests to return the HPUB for a given issue (if the user is allowed to access it)
 
 # Debugging
 
